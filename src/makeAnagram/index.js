@@ -14,23 +14,21 @@ function buildOutHash(str) {
   return hash;
 }
 
-function makeAnagram(str1, str2) {
+export default function makeAnagram(str1, str2) {
   const hash = buildOutHash(str1);
-  let nonMatchingCharactersAmount = 0;
+  let charactersInStr2WithoutAMatch = 0;
 
   for (let i = 0; i < str2.length; i++) {
     if (hash[str2[i]] >= 1) {
       hash[str2[i]]--;
     } else {
-      nonMatchingCharactersAmount++;
+      charactersInStr2WithoutAMatch++;
     }
   }
 
-  const remainingCharactersAmount = Object.values(hash).reduce((memo, currentValue) => {
+  const charactersInStr1WithoutAMatch = Object.values(hash).reduce((memo, currentValue) => {
     return memo + currentValue;
   }, 0);
 
-  return Promise.resolve(nonMatchingCharactersAmount + remainingCharactersAmount);
+  return charactersInStr1WithoutAMatch + charactersInStr2WithoutAMatch;
 }
-
-module.exports = makeAnagram;
