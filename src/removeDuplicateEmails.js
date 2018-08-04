@@ -1,3 +1,5 @@
+'use strict';
+
 export default function removeDuplicateEmails(emails) {
   let emailHash = {};
   const newEmailList = [];
