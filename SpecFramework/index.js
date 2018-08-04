@@ -29,7 +29,15 @@ class SpecFramework {
     this.logDescriptions({ descriptions });
     this.specSpaces = descriptions.length * 2;
 
-    return specs.forEach((spec) => spec());
+    return new Promise((resolve) => {
+      return specs.forEach((spec, i) => {
+        spec();
+
+        if (i === specs.length - 1) {
+          resolve();
+        }
+      });
+    });
   }
 
   logDescriptions({ descriptions }) {

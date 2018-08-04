@@ -1,12 +1,18 @@
 import Logger from '../Logger';
 import {
-  arraysInitiallyOrderedTheSame,
-  arraysNotReversed
+  checkIfArrayEquivalence
 } from '../utils';
 
 class ExpectationThat {
   constructor(actualValue) {
     this.actualValue = actualValue;
+  }
+
+  arrayEquals(expectedValue) {
+    return {
+      passed: checkIfArrayEquivalence(this.actualValue, expectedValue),
+      errorMessage: `expected ${this.actualValue} to deeply equal ${expectedValue}`
+    }
   }
 
   equals(expectedValue) {
