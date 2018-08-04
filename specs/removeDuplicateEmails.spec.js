@@ -1,7 +1,7 @@
 import {
   ExpectationThat,
   specFramework,
-  utils
+  utils,
 } from './support/specHelper';
 import generateEmails from './support/generateEmails';
 import removeDuplicateEmails from '../src/removeDuplicateEmails';
@@ -18,11 +18,11 @@ export default function() {
         return Promise.resolve(removeDuplicateEmails(emails))
           .then(() => {
             const t1 = utils.getTime();
-            const actualTimeToComplete = t1-t0;
+            const actualTimeToComplete = t1 - t0;
 
             return specFramework.buildSpec({
               behavior: 'it takes less than 1 second to finish',
-              expectation: new ExpectationThat(actualTimeToComplete).isLessThan(maxTime)
+              expectation: new ExpectationThat(actualTimeToComplete).isLessThan(maxTime),
             });
           });
       },
@@ -35,7 +35,7 @@ export default function() {
           'foo@yahoo.com',
           'bar@yahoo.com',
           'baz@yahoo.com',
-          'foo@gmail.com'
+          'foo@gmail.com',
         ];
         const actualValue = removeDuplicateEmails(emails).sort();
         const expectedValue = [
@@ -44,12 +44,12 @@ export default function() {
           'baz@gmail.com',
           'foo@yahoo.com',
           'bar@yahoo.com',
-          'baz@yahoo.com'
+          'baz@yahoo.com',
         ].sort();
 
         return specFramework.buildSpec({
           behavior: 'it removes the duplicates',
-          expectation: new ExpectationThat(actualValue).arrayEquals(expectedValue)
+          expectation: new ExpectationThat(actualValue).arrayEquals(expectedValue),
         });
       },
 
@@ -57,16 +57,16 @@ export default function() {
         const emails = [
           'foo@gmail.com',
           'foo@gmail.com',
-          'foo@gmail.com'
+          'foo@gmail.com',
         ];
         const actualValue = removeDuplicateEmails(emails).sort();
         const expectedValue = [
-          'foo@gmail.com'
+          'foo@gmail.com',
         ];
 
         return specFramework.buildSpec({
           behavior: 'it removes the duplicates',
-          expectation: new ExpectationThat(actualValue).arrayEquals(expectedValue)
+          expectation: new ExpectationThat(actualValue).arrayEquals(expectedValue),
         });
       },
 
@@ -99,14 +99,14 @@ export default function() {
           'baz@gmail.com',
           'foo@yahoo.com',
           'bar@yahoo.com',
-          'baz@yahoo.com'
+          'baz@yahoo.com',
         ].sort();
 
         return specFramework.buildSpec({
           behavior: 'it removes the duplicates',
-          expectation: new ExpectationThat(actualValue).arrayEquals(expectedValue)
+          expectation: new ExpectationThat(actualValue).arrayEquals(expectedValue),
         });
       },
-    ]
+    ],
   });
 }

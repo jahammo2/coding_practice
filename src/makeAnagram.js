@@ -1,7 +1,5 @@
-'use strict';
-
 function buildOutHash(str) {
-  let hash = new Object();
+  const hash = {};
 
   for (let i = 0; i < str.length; i++) {
     if (hash[str[i]] >= 0) {
@@ -20,15 +18,16 @@ export default function makeAnagram(str1, str2) {
 
   for (let i = 0; i < str2.length; i++) {
     if (hash[str2[i]] >= 1) {
-      hash[str2[i]]--;
+      hash[str2[i]] -= 1;
     } else {
-      charactersInStr2WithoutAMatch++;
+      charactersInStr2WithoutAMatch += 1;
     }
   }
 
-  const charactersInStr1WithoutAMatch = Object.values(hash).reduce((memo, currentValue) => {
-    return memo + currentValue;
-  }, 0);
+  const charactersInStr1WithoutAMatch = Object.values(hash).reduce(
+    (memo, currentValue) => memo + currentValue,
+    0,
+  );
 
   return charactersInStr1WithoutAMatch + charactersInStr2WithoutAMatch;
 }

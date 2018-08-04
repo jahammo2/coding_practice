@@ -8,5 +8,5 @@ const specFramework = new SpecFramework(Logger);
 export {
   ExpectationThat,
   specFramework,
-  utils
+  utils,
 };

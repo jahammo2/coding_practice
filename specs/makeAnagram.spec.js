@@ -1,7 +1,7 @@
 import {
   ExpectationThat,
   specFramework,
-  utils
+  utils,
 } from './support/specHelper';
 import { makeAnagramStressData } from './support/stressData';
 import makeAnagram from '../src/makeAnagram';
@@ -16,7 +16,7 @@ export default function() {
 
         return specFramework.buildSpec({
           behavior: 'it deletes enough characters to make an anagram',
-          expectation: new ExpectationThat(actualValue).equals(expectedValue)
+          expectation: new ExpectationThat(actualValue).equals(expectedValue),
         });
       },
 
@@ -26,7 +26,7 @@ export default function() {
 
         return specFramework.buildSpec({
           behavior: 'it deletes enough characters to make an anagram',
-          expectation: new ExpectationThat(actualValue).equals(expectedValue)
+          expectation: new ExpectationThat(actualValue).equals(expectedValue),
         });
       },
 
@@ -36,7 +36,7 @@ export default function() {
 
         return specFramework.buildSpec({
           behavior: 'it deletes enough characters to make an anagram',
-          expectation: new ExpectationThat(actualValue).equals(expectedValue)
+          expectation: new ExpectationThat(actualValue).equals(expectedValue),
         });
       },
 
@@ -46,7 +46,7 @@ export default function() {
 
         return specFramework.buildSpec({
           behavior: 'it deletes enough characters to make an anagram',
-          expectation: new ExpectationThat(actualValue).equals(expectedValue)
+          expectation: new ExpectationThat(actualValue).equals(expectedValue),
         });
       },
 
@@ -56,7 +56,7 @@ export default function() {
 
         return Promise.resolve(makeAnagram(
           makeAnagramStressData.str1,
-          makeAnagramStressData.str2
+          makeAnagramStressData.str2,
         ))
           .then(() => {
             const t1 = utils.getTime();
@@ -64,10 +64,10 @@ export default function() {
 
             return specFramework.buildSpec({
               behavior: 'it takes less than 1 second to finish',
-              expectation: new ExpectationThat(actualTimeToComplete).isLessThan(maxTime)
+              expectation: new ExpectationThat(actualTimeToComplete).isLessThan(maxTime),
             });
           });
-      }
-    ]
+      },
+    ],
   });
 }
