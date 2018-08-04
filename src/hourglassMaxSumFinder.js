@@ -1,5 +1,3 @@
-'use strict';
-
 export default function hourglassMaxSumFinder(array) {
   const maxLength = array[0].length - 2;
   const maxWidth = array.length - 2;
