@@ -1,7 +1,6 @@
 import {
   ExpectationThat,
   specFramework,
-  utils,
 } from './support/specHelper';
 import sharedSubstringFinder from '../src/sharedSubstringFinder';
 
